@@ -12,7 +12,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
+
+// login
+Route::view('/login', 'auth.login');
+Route::view('/register', 'auth.register');
+Route::view('/auth', [LoginController::class, 'index']);
+
+// dashboard
+Route::view('/dashboard', 'dashboard.main');
+
+//master data
+Route::view('/repo-kp', 'dashboard.pages.repo-kp');
