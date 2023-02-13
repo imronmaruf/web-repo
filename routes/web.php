@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+    return view('landings.pages.landing-page');
 });
 
 // login
@@ -22,7 +22,7 @@ Route::view('/register', 'auth.register');
 Route::view('/auth', [LoginController::class, 'index']);
 
 // dashboard
-Route::view('/dashboard', 'dashboard.main');
+Route::view('/dashboard', 'dashboard.pages.dashboard');
 
 //master data
 Route::view('/repo-kp', 'dashboard.pages.repo-kp');
