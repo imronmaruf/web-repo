@@ -1,1 +1,0 @@
-@extends('landings.main')

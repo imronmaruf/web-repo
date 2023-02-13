@@ -42,14 +42,18 @@
     <!-- Spinner End -->
 
     <!-- Navbar Start -->
-    @include('landings.navbar')
+    @include('landings.partials.navbar')
     <!-- Navbar End -->
 
-    <!-- Header Start -->
-    @include('landings.header')
-    <!-- Header End -->
+    <!-- content Start -->
+    <div class="container-fluid hero-header bg-light py-5 mb-5">
+        <div class="container py-5">
+            @yield('isi')
+        </div>
+    </div>
+    <!-- content End -->
 
-    @include('landings.footer')
+    @include('landings.partials.footer')
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
