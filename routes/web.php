@@ -1,6 +1,8 @@
-<?php
+-<?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +18,21 @@ Route::get('/', function () {
     return view('landings.pages.landing-page');
 });
 
-// login
-Route::view('/login', 'auth.login');
-Route::view('/register', 'auth.register');
-Route::view('/auth', [LoginController::class, 'index']);
+// // login
+// Route::view('/login', 'auth.login');
+// Route::view('/register', 'auth.register');
+// Route::view('/auth', [LoginController::class, 'index']);
 
-// dashboard
-Route::view('/dashboard', 'dashboard.pages.dashboard');
+Route::get('dashboard',[AuthController::class,'dashboard']);
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::get('registration', [AuthController::class, 'registration'])->name('register-user');
+Route::post('register', [AuthController::class, 'register'])->name('register');
+Route::get('logout', [AuthController::class, 'logout'])->name('signout');
 
-//master data
-Route::view('/repo-kp', 'dashboard.pages.repo-kp');
+
+// // dashboard
+// Route::view('/dashboard', 'dashboard.pages.dashboard');
+
+// //master data
+// Route::view('/repo-kp', 'dashboard.pages.repo-kp');
