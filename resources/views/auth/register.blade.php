@@ -1,4 +1,4 @@
-@include('main-template')
+@include('auth.main')
 
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
@@ -54,18 +54,24 @@
                     </label>
                   </div>
                   <a href="#" class="auth-link text-black">Forgot password?</a> --}}
-                </div>
-                {{-- <div class="mb-2">
+                                </div>
+                                {{-- <div class="mb-2">
                   <button type="button" class="btn btn-block btn-facebook auth-form-btn">
                     <i class="ti-facebook me-2"></i>Connect using facebook
                   </button>
                 </div> --}}
-              </form>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <!-- content-wrapper ends -->
         </div>
-      </div>
-      <!-- content-wrapper ends -->
+        <!-- page-body-wrapper ends -->
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
+</body>
+
+</html>

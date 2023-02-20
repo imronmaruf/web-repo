@@ -1,7 +1,7 @@
-@include('main-template')
+@include('auth.main')
 
-<body>
-  <div class="container-scroller">
+
+<div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-center auth px-0">
         <div class="row w-100 mx-0">
@@ -41,23 +41,24 @@
                     </label>
                   </div>
                   <a href="#" class="auth-link text-black">Forgot password?</a> --}}
-                </div>
-                {{-- <div class="mb-2">
+                            </div>
+                            {{-- <div class="mb-2">
                   <button type="button" class="btn btn-block btn-facebook auth-form-btn">
                     <i class="ti-facebook me-2"></i>Connect using facebook
                   </button>
                 </div> --}}
-                <div class="text-center mt-4 fw-light">
-                  Don't have an account? <a href="/register" class="text-primary">Register</a>
+                            <div class="text-center mt-4 fw-light">
+                                Don't have an account? <a href="/register" class="text-primary">Register</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </form>
             </div>
-          </div>
         </div>
-      </div>
-      <!-- content-wrapper ends -->
+        <!-- content-wrapper ends -->
     </div>
     <!-- page-body-wrapper ends -->
+
   </div>
 
 </body>
