@@ -62,7 +62,12 @@
               Activity</a>
             <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>
               FAQ</a>
-            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+            <a class="dropdown-item"
+              onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+            <form action="{{ route('logout') }}" method="post" id="logout-form" class="d-none">
+              @csrf
+            </form>
           </div>
         </li>
       </ul>
