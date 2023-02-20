@@ -23,12 +23,15 @@ Route::get('/', function () {
 // Route::view('/register', 'auth.register');
 // Route::view('/auth', [LoginController::class, 'index']);
 
-Route::get('dashboard',[AuthController::class,'dashboard']);
-Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::post('login', [AuthController::class, 'login'])->name('login');
-Route::get('registration', [AuthController::class, 'registration'])->name('register-user');
-Route::post('register', [AuthController::class, 'register'])->name('register');
-Route::get('logout', [AuthController::class, 'logout'])->name('signout');
+Route::middleware('auth')->group(function ()
+{
+    Route::get('/dashboard',[AuthController::class,'dashboard']);
+});
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.store');
+Route::get('/registration', [AuthController::class, 'registration'])->name('register-user');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 // // dashboard

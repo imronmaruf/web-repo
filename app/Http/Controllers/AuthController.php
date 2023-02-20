@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Hash;
-use Session;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -23,7 +23,8 @@ class AuthController extends Controller
         ]);
         $kredensial = $request->only('email','password');
         if (Auth::attempt($kredensial)){
-            return redirect()->intended('dashboard.pages.dashboard')-> withSuccess('Log In Berhasil');
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard')-> withSuccess('Log In Berhasil');
         }
         return redirect("Login")-> withSucces('Login Gagal');
     }
@@ -35,40 +36,24 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name' => 'require',
-            'email' => 'require|email|unique:users',
-            'password' => 'require|min:6'
+            'username' => 'required',
+            'name' => 'required',
+            'ni' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6'
         ]);
         $data = $request->all();
-        $check = $this->create($data);
+        $data['password'] = Hash::make($data['password']);
+        User::create($data);
 
-        return redirect('dashboard.pages.dashboard')->withSuccess('Anda Berhasil Login');
+        return redirect('/login')->withSuccess('Anda Berhasil Login');
     }
 
-    public function create (array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password'])
-        ]);
-    }
 
-    public function dashboard()
-
-    {
-        if(Auth::check())
-        {
-            return view('dashboard.pages.dashboard');
-        }
-
-        return redirect("login")->withSuccess('Anda tidak terdaftar');
-
-    }
-
-    public function logout(){
+    public function logout(Request $request){
         Session::flush();
         Auth::logout();
+        $request->session()->regenerateToken();
 
         return redirect('login');
     }
